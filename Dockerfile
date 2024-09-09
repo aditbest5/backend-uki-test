@@ -50,7 +50,7 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader || { \
 
 # Generate application key
 RUN php artisan key:generate
-
+RUN php artisan migrate
 # Set permissions
 RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
 
