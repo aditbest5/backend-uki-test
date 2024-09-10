@@ -36,8 +36,8 @@ class CurrencyController extends Controller
     public function getCurrency()
     {
         try {
-            $now = Carbon::now()->toDateString();
-            $row = Currency::where('date', $now )->first();
+            // $now = Carbon::now()->toDateString();
+            $row = Currency::latest()->first();
             return response()->json(["response_code" => "200", 'response_message' => "Berhasil Mendapatkan Currency!", "data"=>$row], 200);
         } catch (\Exception $th) {
             return response()->json(["response_code" => "500",'response_message' => $th->getMessage()], 500);
